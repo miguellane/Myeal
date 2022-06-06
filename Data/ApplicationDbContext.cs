@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Myeal.Models;
 
 namespace Myeal.Data
 {
@@ -9,5 +10,6 @@ namespace Myeal.Data
             : base(options)
         {
         }
+        public DbSet<Myeal.Models.Auth0_Account>? Auth0_Account { get; set; }
     }
 }
