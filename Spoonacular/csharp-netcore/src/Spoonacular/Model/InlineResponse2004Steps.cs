@@ -27,56 +27,59 @@ using OpenAPIDateConverter = Spoonacular.Client.OpenAPIDateConverter;
 namespace Spoonacular.Model
 {
     /// <summary>
-    /// InlineResponse2005
+    /// InlineResponse2004Steps
     /// </summary>
-    [DataContract(Name = "inline_response_200_5")]
-    public partial class InlineResponse2005 : IEquatable<InlineResponse2005>, IValidatableObject
+    [DataContract(Name = "inline_response_200_4_steps")]
+    public partial class InlineResponse2004Steps : IEquatable<InlineResponse2004Steps>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InlineResponse2005" /> class.
+        /// Initializes a new instance of the <see cref="InlineResponse2004Steps" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected InlineResponse2005() { }
+        protected InlineResponse2004Steps() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="InlineResponse2005" /> class.
+        /// Initializes a new instance of the <see cref="InlineResponse2004Steps" /> class.
         /// </summary>
-        /// <param name="id">id (required).</param>
-        /// <param name="summary">summary (required).</param>
-        /// <param name="title">title (required).</param>
-        public InlineResponse2005(int id = default(int), string summary = default(string), string title = default(string))
+        /// <param name="number">number (required).</param>
+        /// <param name="step">step (required).</param>
+        /// <param name="ingredients">ingredients.</param>
+        /// <param name="equipment">equipment.</param>
+        public InlineResponse2004Steps(decimal number = default(decimal), string step = default(string), List<InlineResponse2004Ingredients> ingredients = default(List<InlineResponse2004Ingredients>), List<InlineResponse2004Ingredients> equipment = default(List<InlineResponse2004Ingredients>))
         {
-            this.Id = id;
-            // to ensure "summary" is required (not null)
-            if (summary == null)
+            this.Number = number;
+            // to ensure "step" is required (not null)
+            if (step == null)
             {
-                throw new ArgumentNullException("summary is a required property for InlineResponse2005 and cannot be null");
+                throw new ArgumentNullException("step is a required property for InlineResponse2004Steps and cannot be null");
             }
-            this.Summary = summary;
-            // to ensure "title" is required (not null)
-            if (title == null)
-            {
-                throw new ArgumentNullException("title is a required property for InlineResponse2005 and cannot be null");
-            }
-            this.Title = title;
+            this.Step = step;
+            this.Ingredients = ingredients;
+            this.Equipment = equipment;
         }
 
         /// <summary>
-        /// Gets or Sets Id
+        /// Gets or Sets Number
         /// </summary>
-        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "number", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Number { get; set; }
 
         /// <summary>
-        /// Gets or Sets Summary
+        /// Gets or Sets Step
         /// </summary>
-        [DataMember(Name = "summary", IsRequired = true, EmitDefaultValue = false)]
-        public string Summary { get; set; }
+        [DataMember(Name = "step", IsRequired = true, EmitDefaultValue = false)]
+        public string Step { get; set; }
 
         /// <summary>
-        /// Gets or Sets Title
+        /// Gets or Sets Ingredients
         /// </summary>
-        [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
-        public string Title { get; set; }
+        [DataMember(Name = "ingredients", EmitDefaultValue = false)]
+        public List<InlineResponse2004Ingredients> Ingredients { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Equipment
+        /// </summary>
+        [DataMember(Name = "equipment", EmitDefaultValue = false)]
+        public List<InlineResponse2004Ingredients> Equipment { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -85,10 +88,11 @@ namespace Spoonacular.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class InlineResponse2005 {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Summary: ").Append(Summary).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
+            sb.Append("class InlineResponse2004Steps {\n");
+            sb.Append("  Number: ").Append(Number).Append("\n");
+            sb.Append("  Step: ").Append(Step).Append("\n");
+            sb.Append("  Ingredients: ").Append(Ingredients).Append("\n");
+            sb.Append("  Equipment: ").Append(Equipment).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -109,15 +113,15 @@ namespace Spoonacular.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as InlineResponse2005);
+            return this.Equals(input as InlineResponse2004Steps);
         }
 
         /// <summary>
-        /// Returns true if InlineResponse2005 instances are equal
+        /// Returns true if InlineResponse2004Steps instances are equal
         /// </summary>
-        /// <param name="input">Instance of InlineResponse2005 to be compared</param>
+        /// <param name="input">Instance of InlineResponse2004Steps to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(InlineResponse2005 input)
+        public bool Equals(InlineResponse2004Steps input)
         {
             if (input == null)
             {
@@ -125,18 +129,25 @@ namespace Spoonacular.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    this.Number == input.Number ||
+                    this.Number.Equals(input.Number)
                 ) && 
                 (
-                    this.Summary == input.Summary ||
-                    (this.Summary != null &&
-                    this.Summary.Equals(input.Summary))
+                    this.Step == input.Step ||
+                    (this.Step != null &&
+                    this.Step.Equals(input.Step))
                 ) && 
                 (
-                    this.Title == input.Title ||
-                    (this.Title != null &&
-                    this.Title.Equals(input.Title))
+                    this.Ingredients == input.Ingredients ||
+                    this.Ingredients != null &&
+                    input.Ingredients != null &&
+                    this.Ingredients.SequenceEqual(input.Ingredients)
+                ) && 
+                (
+                    this.Equipment == input.Equipment ||
+                    this.Equipment != null &&
+                    input.Equipment != null &&
+                    this.Equipment.SequenceEqual(input.Equipment)
                 );
         }
 
@@ -149,14 +160,18 @@ namespace Spoonacular.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
-                if (this.Summary != null)
+                hashCode = (hashCode * 59) + this.Number.GetHashCode();
+                if (this.Step != null)
                 {
-                    hashCode = (hashCode * 59) + this.Summary.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Step.GetHashCode();
                 }
-                if (this.Title != null)
+                if (this.Ingredients != null)
                 {
-                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Ingredients.GetHashCode();
+                }
+                if (this.Equipment != null)
+                {
+                    hashCode = (hashCode * 59) + this.Equipment.GetHashCode();
                 }
                 return hashCode;
             }
@@ -169,16 +184,10 @@ namespace Spoonacular.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Summary (string) minLength
-            if (this.Summary != null && this.Summary.Length < 1)
+            // Step (string) minLength
+            if (this.Step != null && this.Step.Length < 1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Summary, length must be greater than 1.", new [] { "Summary" });
-            }
-
-            // Title (string) minLength
-            if (this.Title != null && this.Title.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Title, length must be greater than 1.", new [] { "Title" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Step, length must be greater than 1.", new [] { "Step" });
             }
 
             yield break;

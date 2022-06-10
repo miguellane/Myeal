@@ -93,49 +93,49 @@ namespace Spoonacular.Model
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
-        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "id", IsRequired = false, EmitDefaultValue = false)]
         public int Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Title
         /// </summary>
-        [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "title", IsRequired = false, EmitDefaultValue = false)]
         public string Title { get; set; }
 
         /// <summary>
         /// Gets or Sets Calories
         /// </summary>
-        [DataMember(Name = "calories", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "calories", IsRequired = false, EmitDefaultValue = false)]
         public decimal Calories { get; set; }
 
         /// <summary>
         /// Gets or Sets Carbs
         /// </summary>
-        [DataMember(Name = "carbs", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "carbs", IsRequired = false, EmitDefaultValue = false)]
         public string Carbs { get; set; }
 
         /// <summary>
         /// Gets or Sets Fat
         /// </summary>
-        [DataMember(Name = "fat", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "fat", IsRequired = false, EmitDefaultValue = false)]
         public string Fat { get; set; }
 
         /// <summary>
         /// Gets or Sets Image
         /// </summary>
-        [DataMember(Name = "image", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "image", IsRequired = false, EmitDefaultValue = false)]
         public string Image { get; set; }
 
         /// <summary>
         /// Gets or Sets ImageType
         /// </summary>
-        [DataMember(Name = "imageType", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "imageType", IsRequired = false, EmitDefaultValue = false)]
         public string ImageType { get; set; }
 
         /// <summary>
         /// Gets or Sets Protein
         /// </summary>
-        [DataMember(Name = "protein", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "protein", IsRequired = false, EmitDefaultValue = false)]
         public string Protein { get; set; }
 
         /// <summary>

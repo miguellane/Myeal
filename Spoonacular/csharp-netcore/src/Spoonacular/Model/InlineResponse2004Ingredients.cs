@@ -27,37 +27,44 @@ using OpenAPIDateConverter = Spoonacular.Client.OpenAPIDateConverter;
 namespace Spoonacular.Model
 {
     /// <summary>
-    /// InlineResponse2005
+    /// InlineResponse2004Ingredients
     /// </summary>
-    [DataContract(Name = "inline_response_200_5")]
-    public partial class InlineResponse2005 : IEquatable<InlineResponse2005>, IValidatableObject
+    [DataContract(Name = "inline_response_200_4_ingredients")]
+    public partial class InlineResponse2004Ingredients : IEquatable<InlineResponse2004Ingredients>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InlineResponse2005" /> class.
+        /// Initializes a new instance of the <see cref="InlineResponse2004Ingredients" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected InlineResponse2005() { }
+        protected InlineResponse2004Ingredients() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="InlineResponse2005" /> class.
+        /// Initializes a new instance of the <see cref="InlineResponse2004Ingredients" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="summary">summary (required).</param>
-        /// <param name="title">title (required).</param>
-        public InlineResponse2005(int id = default(int), string summary = default(string), string title = default(string))
+        /// <param name="name">name (required).</param>
+        /// <param name="localizedName">localizedName (required).</param>
+        /// <param name="image">image (required).</param>
+        public InlineResponse2004Ingredients(int id = default(int), string name = default(string), string localizedName = default(string), string image = default(string))
         {
             this.Id = id;
-            // to ensure "summary" is required (not null)
-            if (summary == null)
+            // to ensure "name" is required (not null)
+            if (name == null)
             {
-                throw new ArgumentNullException("summary is a required property for InlineResponse2005 and cannot be null");
+                throw new ArgumentNullException("name is a required property for InlineResponse2004Ingredients and cannot be null");
             }
-            this.Summary = summary;
-            // to ensure "title" is required (not null)
-            if (title == null)
+            this.Name = name;
+            // to ensure "localizedName" is required (not null)
+            if (localizedName == null)
             {
-                throw new ArgumentNullException("title is a required property for InlineResponse2005 and cannot be null");
+                throw new ArgumentNullException("localizedName is a required property for InlineResponse2004Ingredients and cannot be null");
             }
-            this.Title = title;
+            this.LocalizedName = localizedName;
+            // to ensure "image" is required (not null)
+            if (image == null)
+            {
+                throw new ArgumentNullException("image is a required property for InlineResponse2004Ingredients and cannot be null");
+            }
+            this.Image = image;
         }
 
         /// <summary>
@@ -67,16 +74,22 @@ namespace Spoonacular.Model
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Summary
+        /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name = "summary", IsRequired = true, EmitDefaultValue = false)]
-        public string Summary { get; set; }
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets Title
+        /// Gets or Sets LocalizedName
         /// </summary>
-        [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
-        public string Title { get; set; }
+        [DataMember(Name = "localizedName", IsRequired = true, EmitDefaultValue = false)]
+        public string LocalizedName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Image
+        /// </summary>
+        [DataMember(Name = "image", IsRequired = true, EmitDefaultValue = false)]
+        public string Image { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -85,10 +98,11 @@ namespace Spoonacular.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class InlineResponse2005 {\n");
+            sb.Append("class InlineResponse2004Ingredients {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Summary: ").Append(Summary).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  LocalizedName: ").Append(LocalizedName).Append("\n");
+            sb.Append("  Image: ").Append(Image).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -109,15 +123,15 @@ namespace Spoonacular.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as InlineResponse2005);
+            return this.Equals(input as InlineResponse2004Ingredients);
         }
 
         /// <summary>
-        /// Returns true if InlineResponse2005 instances are equal
+        /// Returns true if InlineResponse2004Ingredients instances are equal
         /// </summary>
-        /// <param name="input">Instance of InlineResponse2005 to be compared</param>
+        /// <param name="input">Instance of InlineResponse2004Ingredients to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(InlineResponse2005 input)
+        public bool Equals(InlineResponse2004Ingredients input)
         {
             if (input == null)
             {
@@ -129,14 +143,19 @@ namespace Spoonacular.Model
                     this.Id.Equals(input.Id)
                 ) && 
                 (
-                    this.Summary == input.Summary ||
-                    (this.Summary != null &&
-                    this.Summary.Equals(input.Summary))
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Title == input.Title ||
-                    (this.Title != null &&
-                    this.Title.Equals(input.Title))
+                    this.LocalizedName == input.LocalizedName ||
+                    (this.LocalizedName != null &&
+                    this.LocalizedName.Equals(input.LocalizedName))
+                ) && 
+                (
+                    this.Image == input.Image ||
+                    (this.Image != null &&
+                    this.Image.Equals(input.Image))
                 );
         }
 
@@ -150,13 +169,17 @@ namespace Spoonacular.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.Id.GetHashCode();
-                if (this.Summary != null)
+                if (this.Name != null)
                 {
-                    hashCode = (hashCode * 59) + this.Summary.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
-                if (this.Title != null)
+                if (this.LocalizedName != null)
                 {
-                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
+                    hashCode = (hashCode * 59) + this.LocalizedName.GetHashCode();
+                }
+                if (this.Image != null)
+                {
+                    hashCode = (hashCode * 59) + this.Image.GetHashCode();
                 }
                 return hashCode;
             }
@@ -169,16 +192,22 @@ namespace Spoonacular.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Summary (string) minLength
-            if (this.Summary != null && this.Summary.Length < 1)
+            // Name (string) minLength
+            if (this.Name != null && this.Name.Length < 1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Summary, length must be greater than 1.", new [] { "Summary" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be greater than 1.", new [] { "Name" });
             }
 
-            // Title (string) minLength
-            if (this.Title != null && this.Title.Length < 1)
+            // LocalizedName (string) minLength
+            if (this.LocalizedName != null && this.LocalizedName.Length < 1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Title, length must be greater than 1.", new [] { "Title" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LocalizedName, length must be greater than 1.", new [] { "LocalizedName" });
+            }
+
+            // Image (string) minLength
+            if (this.Image != null && this.Image.Length < 1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Image, length must be greater than 1.", new [] { "Image" });
             }
 
             yield break;

@@ -27,37 +27,30 @@ using OpenAPIDateConverter = Spoonacular.Client.OpenAPIDateConverter;
 namespace Spoonacular.Model
 {
     /// <summary>
-    /// InlineResponse2005
+    /// InlineResponse2004Ingredients1
     /// </summary>
-    [DataContract(Name = "inline_response_200_5")]
-    public partial class InlineResponse2005 : IEquatable<InlineResponse2005>, IValidatableObject
+    [DataContract(Name = "inline_response_200_4_ingredients_1")]
+    public partial class InlineResponse2004Ingredients1 : IEquatable<InlineResponse2004Ingredients1>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InlineResponse2005" /> class.
+        /// Initializes a new instance of the <see cref="InlineResponse2004Ingredients1" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected InlineResponse2005() { }
+        protected InlineResponse2004Ingredients1() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="InlineResponse2005" /> class.
+        /// Initializes a new instance of the <see cref="InlineResponse2004Ingredients1" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="summary">summary (required).</param>
-        /// <param name="title">title (required).</param>
-        public InlineResponse2005(int id = default(int), string summary = default(string), string title = default(string))
+        /// <param name="name">name (required).</param>
+        public InlineResponse2004Ingredients1(int id = default(int), string name = default(string))
         {
             this.Id = id;
-            // to ensure "summary" is required (not null)
-            if (summary == null)
+            // to ensure "name" is required (not null)
+            if (name == null)
             {
-                throw new ArgumentNullException("summary is a required property for InlineResponse2005 and cannot be null");
+                throw new ArgumentNullException("name is a required property for InlineResponse2004Ingredients1 and cannot be null");
             }
-            this.Summary = summary;
-            // to ensure "title" is required (not null)
-            if (title == null)
-            {
-                throw new ArgumentNullException("title is a required property for InlineResponse2005 and cannot be null");
-            }
-            this.Title = title;
+            this.Name = name;
         }
 
         /// <summary>
@@ -67,16 +60,10 @@ namespace Spoonacular.Model
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Summary
+        /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name = "summary", IsRequired = true, EmitDefaultValue = false)]
-        public string Summary { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Title
-        /// </summary>
-        [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
-        public string Title { get; set; }
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -85,10 +72,9 @@ namespace Spoonacular.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class InlineResponse2005 {\n");
+            sb.Append("class InlineResponse2004Ingredients1 {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Summary: ").Append(Summary).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -109,15 +95,15 @@ namespace Spoonacular.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as InlineResponse2005);
+            return this.Equals(input as InlineResponse2004Ingredients1);
         }
 
         /// <summary>
-        /// Returns true if InlineResponse2005 instances are equal
+        /// Returns true if InlineResponse2004Ingredients1 instances are equal
         /// </summary>
-        /// <param name="input">Instance of InlineResponse2005 to be compared</param>
+        /// <param name="input">Instance of InlineResponse2004Ingredients1 to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(InlineResponse2005 input)
+        public bool Equals(InlineResponse2004Ingredients1 input)
         {
             if (input == null)
             {
@@ -129,14 +115,9 @@ namespace Spoonacular.Model
                     this.Id.Equals(input.Id)
                 ) && 
                 (
-                    this.Summary == input.Summary ||
-                    (this.Summary != null &&
-                    this.Summary.Equals(input.Summary))
-                ) && 
-                (
-                    this.Title == input.Title ||
-                    (this.Title != null &&
-                    this.Title.Equals(input.Title))
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 );
         }
 
@@ -150,13 +131,9 @@ namespace Spoonacular.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.Id.GetHashCode();
-                if (this.Summary != null)
+                if (this.Name != null)
                 {
-                    hashCode = (hashCode * 59) + this.Summary.GetHashCode();
-                }
-                if (this.Title != null)
-                {
-                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
                 return hashCode;
             }
@@ -169,16 +146,10 @@ namespace Spoonacular.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Summary (string) minLength
-            if (this.Summary != null && this.Summary.Length < 1)
+            // Name (string) minLength
+            if (this.Name != null && this.Name.Length < 1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Summary, length must be greater than 1.", new [] { "Summary" });
-            }
-
-            // Title (string) minLength
-            if (this.Title != null && this.Title.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Title, length must be greater than 1.", new [] { "Title" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be greater than 1.", new [] { "Name" });
             }
 
             yield break;

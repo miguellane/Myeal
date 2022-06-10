@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewData["Title"] = "RecipeSearchForm";
+}
+
+<form asp-controller="Recipe" asp-action="RecipeSearchResult">
+    <p>
+        Keywords: <input type="text" name="SearchString" />
+        <input type="submit" value="Search" />
+    </p>
+</form>

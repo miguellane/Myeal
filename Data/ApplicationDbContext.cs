@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Myeal.Models;
+using Spoonacular.Model;
 
 namespace Myeal.Data
 {
@@ -11,5 +12,6 @@ namespace Myeal.Data
         {
         }
         public DbSet<Myeal.Models.Auth0_Account>? Auth0_Account { get; set; }
+        public DbSet<Spoonacular.Model.InlineResponse200Results>? InlineResponse200Results { get; set; }
     }
 }

@@ -21,6 +21,9 @@ builder.Services.AddAuth0WebAppAuthentication(options => {
     options.ClientId = builder.Configuration["Auth0:ClientId"];
     options.Scope = "openid profile email";
 });
+//Spoonacular Client
+builder.Services.AddHttpClient();
+
 
 var app = builder.Build();
 

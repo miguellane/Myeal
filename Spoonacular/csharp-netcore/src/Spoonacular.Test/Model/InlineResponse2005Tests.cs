@@ -66,44 +66,20 @@ namespace Spoonacular.Test.Model
             // TODO unit test for the property 'Id'
         }
         /// <summary>
+        /// Test the property 'Summary'
+        /// </summary>
+        [Fact]
+        public void SummaryTest()
+        {
+            // TODO unit test for the property 'Summary'
+        }
+        /// <summary>
         /// Test the property 'Title'
         /// </summary>
         [Fact]
         public void TitleTest()
         {
             // TODO unit test for the property 'Title'
-        }
-        /// <summary>
-        /// Test the property 'ImageType'
-        /// </summary>
-        [Fact]
-        public void ImageTypeTest()
-        {
-            // TODO unit test for the property 'ImageType'
-        }
-        /// <summary>
-        /// Test the property 'ReadyInMinutes'
-        /// </summary>
-        [Fact]
-        public void ReadyInMinutesTest()
-        {
-            // TODO unit test for the property 'ReadyInMinutes'
-        }
-        /// <summary>
-        /// Test the property 'Servings'
-        /// </summary>
-        [Fact]
-        public void ServingsTest()
-        {
-            // TODO unit test for the property 'Servings'
-        }
-        /// <summary>
-        /// Test the property 'SourceUrl'
-        /// </summary>
-        [Fact]
-        public void SourceUrlTest()
-        {
-            // TODO unit test for the property 'SourceUrl'
         }
 
     }

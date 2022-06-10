@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Spoonacular.Model.InlineResponse200Results>
+
+@{
+    ViewData["Title"] = "RecipeSearchResult";
+}
+
+<h1>Found Recipes</h1>
+
+<p>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                <img src=@Html.DisplayFor(modelItem => item.Image) />
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

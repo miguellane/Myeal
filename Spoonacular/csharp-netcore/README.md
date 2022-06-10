@@ -93,19 +93,19 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // config.ApiKeyPrefix.Add("apiKey", "Bearer");
 
-            var apiInstance = new IngredientsApi(config);
-            var id = 1082038;  // decimal | The recipe id.
-            var measure = metric;  // string? | Whether the the measures should be 'us' or 'metric'. (optional) 
+            var apiInstance = new RecipesApi(config);
+            var id = 1;  // int | The item's id.
+            var stepBreakdown = true;  // bool? | Whether to break down the recipe steps even more. (optional) 
 
             try
             {
-                // Ingredients by ID Image
-                Object result = apiInstance.IngredientsByIDImage(id, measure);
+                // Get Analyzed Recipe Instructions
+                InlineResponse2004 result = apiInstance.GetAnalyzedRecipeInstructions(id, stepBreakdown);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling IngredientsApi.IngredientsByIDImage: " + e.Message );
+                Debug.Print("Exception when calling RecipesApi.GetAnalyzedRecipeInstructions: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -122,47 +122,14 @@ All URIs are relative to *https://api.spoonacular.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*IngredientsApi* | [**IngredientsByIDImage**](docs/IngredientsApi.md#ingredientsbyidimage) | **GET** /recipes/{id}/ingredientWidget.png | Ingredients by ID Image
-*IngredientsApi* | [**VisualizeIngredients**](docs/IngredientsApi.md#visualizeingredients) | **POST** /recipes/visualizeIngredients | Ingredients Widget
-*RecipesApi* | [**AnalyzeARecipeSearchQuery**](docs/RecipesApi.md#analyzearecipesearchquery) | **GET** /recipes/queries/analyze | Analyze a Recipe Search Query
-*RecipesApi* | [**AnalyzeRecipeInstructions**](docs/RecipesApi.md#analyzerecipeinstructions) | **POST** /recipes/analyzeInstructions | Analyze Recipe Instructions
-*RecipesApi* | [**AutocompleteRecipeSearch**](docs/RecipesApi.md#autocompleterecipesearch) | **GET** /recipes/autocomplete | Autocomplete Recipe Search
-*RecipesApi* | [**ClassifyCuisine**](docs/RecipesApi.md#classifycuisine) | **POST** /recipes/cuisine | Classify Cuisine
-*RecipesApi* | [**ConvertAmounts**](docs/RecipesApi.md#convertamounts) | **GET** /recipes/convert | Convert Amounts
-*RecipesApi* | [**CreateRecipeCard**](docs/RecipesApi.md#createrecipecard) | **POST** /recipes/visualizeRecipe | Create Recipe Card
-*RecipesApi* | [**EquipmentByIDImage**](docs/RecipesApi.md#equipmentbyidimage) | **GET** /recipes/{id}/equipmentWidget.png | Equipment by ID Image
-*RecipesApi* | [**ExtractRecipeFromWebsite**](docs/RecipesApi.md#extractrecipefromwebsite) | **GET** /recipes/extract | Extract Recipe from Website
 *RecipesApi* | [**GetAnalyzedRecipeInstructions**](docs/RecipesApi.md#getanalyzedrecipeinstructions) | **GET** /recipes/{id}/analyzedInstructions | Get Analyzed Recipe Instructions
-*RecipesApi* | [**GetRandomRecipes**](docs/RecipesApi.md#getrandomrecipes) | **GET** /recipes/random | Get Random Recipes
-*RecipesApi* | [**GetRecipeEquipmentByID**](docs/RecipesApi.md#getrecipeequipmentbyid) | **GET** /recipes/{id}/equipmentWidget.json | Equipment by ID
 *RecipesApi* | [**GetRecipeInformation**](docs/RecipesApi.md#getrecipeinformation) | **GET** /recipes/{id}/information | Get Recipe Information
-*RecipesApi* | [**GetRecipeInformationBulk**](docs/RecipesApi.md#getrecipeinformationbulk) | **GET** /recipes/informationBulk | Get Recipe Information Bulk
-*RecipesApi* | [**GetRecipeIngredientsByID**](docs/RecipesApi.md#getrecipeingredientsbyid) | **GET** /recipes/{id}/ingredientWidget.json | Ingredients by ID
-*RecipesApi* | [**GetRecipeNutritionWidgetByID**](docs/RecipesApi.md#getrecipenutritionwidgetbyid) | **GET** /recipes/{id}/nutritionWidget.json | Nutrition by ID
-*RecipesApi* | [**GetRecipePriceBreakdownByID**](docs/RecipesApi.md#getrecipepricebreakdownbyid) | **GET** /recipes/{id}/priceBreakdownWidget.json | Price Breakdown by ID
-*RecipesApi* | [**GetRecipeTasteByID**](docs/RecipesApi.md#getrecipetastebyid) | **GET** /recipes/{id}/tasteWidget.json | Taste by ID
-*RecipesApi* | [**GetSimilarRecipes**](docs/RecipesApi.md#getsimilarrecipes) | **GET** /recipes/{id}/similar | Get Similar Recipes
-*RecipesApi* | [**GuessNutritionByDishName**](docs/RecipesApi.md#guessnutritionbydishname) | **GET** /recipes/guessNutrition | Guess Nutrition by Dish Name
-*RecipesApi* | [**IngredientsByIDImage**](docs/RecipesApi.md#ingredientsbyidimage) | **GET** /recipes/{id}/ingredientWidget.png | Ingredients by ID Image
-*RecipesApi* | [**ParseIngredients**](docs/RecipesApi.md#parseingredients) | **POST** /recipes/parseIngredients | Parse Ingredients
-*RecipesApi* | [**PriceBreakdownByIDImage**](docs/RecipesApi.md#pricebreakdownbyidimage) | **GET** /recipes/{id}/priceBreakdownWidget.png | Price Breakdown by ID Image
-*RecipesApi* | [**RecipeNutritionByIDImage**](docs/RecipesApi.md#recipenutritionbyidimage) | **GET** /recipes/{id}/nutritionWidget.png | Recipe Nutrition by ID Image
 *RecipesApi* | [**RecipeNutritionLabelImage**](docs/RecipesApi.md#recipenutritionlabelimage) | **GET** /recipes/{id}/nutritionLabel.png | Recipe Nutrition Label Image
 *RecipesApi* | [**RecipeNutritionLabelWidget**](docs/RecipesApi.md#recipenutritionlabelwidget) | **GET** /recipes/{id}/nutritionLabel | Recipe Nutrition Label Widget
-*RecipesApi* | [**RecipeTasteByIDImage**](docs/RecipesApi.md#recipetastebyidimage) | **GET** /recipes/{id}/tasteWidget.png | Recipe Taste by ID Image
 *RecipesApi* | [**SearchRecipes**](docs/RecipesApi.md#searchrecipes) | **GET** /recipes/complexSearch | Search Recipes
 *RecipesApi* | [**SearchRecipesByIngredients**](docs/RecipesApi.md#searchrecipesbyingredients) | **GET** /recipes/findByIngredients | Search Recipes by Ingredients
 *RecipesApi* | [**SearchRecipesByNutrients**](docs/RecipesApi.md#searchrecipesbynutrients) | **GET** /recipes/findByNutrients | Search Recipes by Nutrients
 *RecipesApi* | [**SummarizeRecipe**](docs/RecipesApi.md#summarizerecipe) | **GET** /recipes/{id}/summary | Summarize Recipe
-*RecipesApi* | [**VisualizeEquipment**](docs/RecipesApi.md#visualizeequipment) | **POST** /recipes/visualizeEquipment | Equipment Widget
-*RecipesApi* | [**VisualizePriceBreakdown**](docs/RecipesApi.md#visualizepricebreakdown) | **POST** /recipes/visualizePriceEstimator | Price Breakdown Widget
-*RecipesApi* | [**VisualizeRecipeEquipmentByID**](docs/RecipesApi.md#visualizerecipeequipmentbyid) | **GET** /recipes/{id}/equipmentWidget | Equipment by ID Widget
-*RecipesApi* | [**VisualizeRecipeIngredientsByID**](docs/RecipesApi.md#visualizerecipeingredientsbyid) | **GET** /recipes/{id}/ingredientWidget | Ingredients by ID Widget
-*RecipesApi* | [**VisualizeRecipeNutrition**](docs/RecipesApi.md#visualizerecipenutrition) | **POST** /recipes/visualizeNutrition | Recipe Nutrition Widget
-*RecipesApi* | [**VisualizeRecipeNutritionByID**](docs/RecipesApi.md#visualizerecipenutritionbyid) | **GET** /recipes/{id}/nutritionWidget | Recipe Nutrition by ID Widget
-*RecipesApi* | [**VisualizeRecipePriceBreakdownByID**](docs/RecipesApi.md#visualizerecipepricebreakdownbyid) | **GET** /recipes/{id}/priceBreakdownWidget | Price Breakdown by ID Widget
-*RecipesApi* | [**VisualizeRecipeTaste**](docs/RecipesApi.md#visualizerecipetaste) | **POST** /recipes/visualizeTaste | Recipe Taste Widget
-*RecipesApi* | [**VisualizeRecipeTasteByID**](docs/RecipesApi.md#visualizerecipetastebyid) | **GET** /recipes/{id}/tasteWidget | Recipe Taste by ID Widget
 
 
 <a name="documentation-for-models"></a>
@@ -170,31 +137,7 @@ Class | Method | HTTP request | Description
 
  - [Model.InlineResponse200](docs/InlineResponse200.md)
  - [Model.InlineResponse2001](docs/InlineResponse2001.md)
- - [Model.InlineResponse20010](docs/InlineResponse20010.md)
- - [Model.InlineResponse20010Amount](docs/InlineResponse20010Amount.md)
- - [Model.InlineResponse20010AmountMetric](docs/InlineResponse20010AmountMetric.md)
- - [Model.InlineResponse20010Ingredients](docs/InlineResponse20010Ingredients.md)
- - [Model.InlineResponse20011](docs/InlineResponse20011.md)
- - [Model.InlineResponse20011Ingredients](docs/InlineResponse20011Ingredients.md)
- - [Model.InlineResponse20012](docs/InlineResponse20012.md)
- - [Model.InlineResponse20013](docs/InlineResponse20013.md)
- - [Model.InlineResponse20013Ingredients](docs/InlineResponse20013Ingredients.md)
- - [Model.InlineResponse20013Ingredients1](docs/InlineResponse20013Ingredients1.md)
- - [Model.InlineResponse20013ParsedInstructions](docs/InlineResponse20013ParsedInstructions.md)
- - [Model.InlineResponse20013Steps](docs/InlineResponse20013Steps.md)
- - [Model.InlineResponse20014](docs/InlineResponse20014.md)
- - [Model.InlineResponse20015](docs/InlineResponse20015.md)
- - [Model.InlineResponse20016](docs/InlineResponse20016.md)
- - [Model.InlineResponse20017](docs/InlineResponse20017.md)
- - [Model.InlineResponse20018](docs/InlineResponse20018.md)
- - [Model.InlineResponse20018Dishes](docs/InlineResponse20018Dishes.md)
- - [Model.InlineResponse20018Ingredients](docs/InlineResponse20018Ingredients.md)
- - [Model.InlineResponse20019](docs/InlineResponse20019.md)
  - [Model.InlineResponse2002](docs/InlineResponse2002.md)
- - [Model.InlineResponse20020](docs/InlineResponse20020.md)
- - [Model.InlineResponse20021](docs/InlineResponse20021.md)
- - [Model.InlineResponse20021Calories](docs/InlineResponse20021Calories.md)
- - [Model.InlineResponse20021CaloriesConfidenceRange95Percent](docs/InlineResponse20021CaloriesConfidenceRange95Percent.md)
  - [Model.InlineResponse2003](docs/InlineResponse2003.md)
  - [Model.InlineResponse2003ExtendedIngredients](docs/InlineResponse2003ExtendedIngredients.md)
  - [Model.InlineResponse2003Measures](docs/InlineResponse2003Measures.md)
@@ -202,20 +145,13 @@ Class | Method | HTTP request | Description
  - [Model.InlineResponse2003WinePairing](docs/InlineResponse2003WinePairing.md)
  - [Model.InlineResponse2003WinePairingProductMatches](docs/InlineResponse2003WinePairingProductMatches.md)
  - [Model.InlineResponse2004](docs/InlineResponse2004.md)
+ - [Model.InlineResponse2004Ingredients](docs/InlineResponse2004Ingredients.md)
+ - [Model.InlineResponse2004Ingredients1](docs/InlineResponse2004Ingredients1.md)
+ - [Model.InlineResponse2004ParsedInstructions](docs/InlineResponse2004ParsedInstructions.md)
+ - [Model.InlineResponse2004Steps](docs/InlineResponse2004Steps.md)
  - [Model.InlineResponse2005](docs/InlineResponse2005.md)
- - [Model.InlineResponse2006](docs/InlineResponse2006.md)
- - [Model.InlineResponse2006Recipes](docs/InlineResponse2006Recipes.md)
- - [Model.InlineResponse2007](docs/InlineResponse2007.md)
- - [Model.InlineResponse2008](docs/InlineResponse2008.md)
- - [Model.InlineResponse2009](docs/InlineResponse2009.md)
  - [Model.InlineResponse200Results](docs/InlineResponse200Results.md)
  - [Model.RecipesFindByIngredientsMissedIngredients](docs/RecipesFindByIngredientsMissedIngredients.md)
- - [Model.RecipesParseIngredientsEstimatedCost](docs/RecipesParseIngredientsEstimatedCost.md)
- - [Model.RecipesParseIngredientsNutrition](docs/RecipesParseIngredientsNutrition.md)
- - [Model.RecipesParseIngredientsNutritionCaloricBreakdown](docs/RecipesParseIngredientsNutritionCaloricBreakdown.md)
- - [Model.RecipesParseIngredientsNutritionNutrients](docs/RecipesParseIngredientsNutritionNutrients.md)
- - [Model.RecipesParseIngredientsNutritionProperties](docs/RecipesParseIngredientsNutritionProperties.md)
- - [Model.RecipesParseIngredientsNutritionWeightPerServing](docs/RecipesParseIngredientsNutritionWeightPerServing.md)
 
 
 <a name="documentation-for-authorization"></a>
