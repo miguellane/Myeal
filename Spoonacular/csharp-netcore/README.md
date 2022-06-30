@@ -94,18 +94,112 @@ namespace Example
             // config.ApiKeyPrefix.Add("apiKey", "Bearer");
 
             var apiInstance = new RecipesApi(config);
-            var id = 1;  // int | The item's id.
-            var stepBreakdown = true;  // bool? | Whether to break down the recipe steps even more. (optional) 
+            var query = burger;  // string? | The (natural language) search query. (optional) 
+            var cuisine = italian;  // string? | The cuisine(s) of the recipes. One or more, comma separated (will be interpreted as 'OR'). See a full list of supported cuisines. (optional) 
+            var excludeCuisine = greek;  // string? | The cuisine(s) the recipes must not match. One or more, comma separated (will be interpreted as 'AND'). See a full list of supported cuisines. (optional) 
+            var diet = vegetarian;  // string? | The diet for which the recipes must be suitable. See a full list of supported diets. (optional) 
+            var intolerances = gluten;  // string? | A comma-separated list of intolerances. All recipes returned must not contain ingredients that are not suitable for people with the intolerances entered. See a full list of supported intolerances. (optional) 
+            var equipment = pan;  // string? | The equipment required. Multiple values will be interpreted as 'or'. For example, value could be \"blender, frying pan, bowl\". (optional) 
+            var includeIngredients = tomato,cheese;  // string? | A comma-separated list of ingredients that should/must be used in the recipes. (optional) 
+            var excludeIngredients = eggs;  // string? | A comma-separated list of ingredients or ingredient types that the recipes must not contain. (optional) 
+            var type = main course;  // string? | The type of recipe. See a full list of supported meal types. (optional) 
+            var instructionsRequired = true;  // bool? | Whether the recipes must have instructions. (optional) 
+            var fillIngredients = false;  // bool? | Add information about the ingredients and whether they are used or missing in relation to the query. (optional) 
+            var addRecipeInformation = false;  // bool? | If set to true, you get more information about the recipes returned. (optional) 
+            var addRecipeNutrition = false;  // bool? | If set to true, you get nutritional information about each recipes returned. (optional) 
+            var author = coffeebean;  // string? | The username of the recipe author. (optional) 
+            var tags = "tags_example";  // string? | The tags (can be diets, meal types, cuisines, or intolerances) that the recipe must have. (optional) 
+            var recipeBoxId = 2468;  // decimal? | The id of the recipe box to which the search should be limited to. (optional) 
+            var titleMatch = Crock Pot;  // string? | Enter text that must be found in the title of the recipes. (optional) 
+            var maxReadyTime = 20;  // decimal? | The maximum time in minutes it should take to prepare and cook the recipe. (optional) 
+            var ignorePantry = false;  // bool? | Whether to ignore typical pantry items, such as water, salt, flour, etc. (optional)  (default to false)
+            var sort = calories;  // string? | The strategy to sort recipes by. See a full list of supported sorting options. (optional) 
+            var sortDirection = asc;  // string? | The direction in which to sort. Must be either 'asc' (ascending) or 'desc' (descending). (optional) 
+            var minCarbs = 10;  // decimal? | The minimum amount of carbohydrates in grams the recipe must have. (optional) 
+            var maxCarbs = 100;  // decimal? | The maximum amount of carbohydrates in grams the recipe can have. (optional) 
+            var minProtein = 10;  // decimal? | The minimum amount of protein in grams the recipe must have. (optional) 
+            var maxProtein = 100;  // decimal? | The maximum amount of protein in grams the recipe can have. (optional) 
+            var minCalories = 50;  // decimal? | The minimum amount of calories the recipe must have. (optional) 
+            var maxCalories = 800;  // decimal? | The maximum amount of calories the recipe can have. (optional) 
+            var minFat = 1;  // decimal? | The minimum amount of fat in grams the recipe must have. (optional) 
+            var maxFat = 100;  // decimal? | The maximum amount of fat in grams the recipe can have. (optional) 
+            var minAlcohol = 0;  // decimal? | The minimum amount of alcohol in grams the recipe must have. (optional) 
+            var maxAlcohol = 100;  // decimal? | The maximum amount of alcohol in grams the recipe can have. (optional) 
+            var minCaffeine = 0;  // decimal? | The minimum amount of caffeine in milligrams the recipe must have. (optional) 
+            var maxCaffeine = 100;  // decimal? | The maximum amount of caffeine in milligrams the recipe can have. (optional) 
+            var minCopper = 0;  // decimal? | The minimum amount of copper in milligrams the recipe must have. (optional) 
+            var maxCopper = 100;  // decimal? | The maximum amount of copper in milligrams the recipe can have. (optional) 
+            var minCalcium = 0;  // decimal? | The minimum amount of calcium in milligrams the recipe must have. (optional) 
+            var maxCalcium = 100;  // decimal? | The maximum amount of calcium in milligrams the recipe can have. (optional) 
+            var minCholine = 0;  // decimal? | The minimum amount of choline in milligrams the recipe must have. (optional) 
+            var maxCholine = 100;  // decimal? | The maximum amount of choline in milligrams the recipe can have. (optional) 
+            var minCholesterol = 0;  // decimal? | The minimum amount of cholesterol in milligrams the recipe must have. (optional) 
+            var maxCholesterol = 100;  // decimal? | The maximum amount of cholesterol in milligrams the recipe can have. (optional) 
+            var minFluoride = 0;  // decimal? | The minimum amount of fluoride in milligrams the recipe must have. (optional) 
+            var maxFluoride = 100;  // decimal? | The maximum amount of fluoride in milligrams the recipe can have. (optional) 
+            var minSaturatedFat = 0;  // decimal? | The minimum amount of saturated fat in grams the recipe must have. (optional) 
+            var maxSaturatedFat = 100;  // decimal? | The maximum amount of saturated fat in grams the recipe can have. (optional) 
+            var minVitaminA = 0;  // decimal? | The minimum amount of Vitamin A in IU the recipe must have. (optional) 
+            var maxVitaminA = 100;  // decimal? | The maximum amount of Vitamin A in IU the recipe can have. (optional) 
+            var minVitaminC = 0;  // decimal? | The minimum amount of Vitamin C milligrams the recipe must have. (optional) 
+            var maxVitaminC = 100;  // decimal? | The maximum amount of Vitamin C in milligrams the recipe can have. (optional) 
+            var minVitaminD = 0;  // decimal? | The minimum amount of Vitamin D in micrograms the recipe must have. (optional) 
+            var maxVitaminD = 100;  // decimal? | The maximum amount of Vitamin D in micrograms the recipe can have. (optional) 
+            var minVitaminE = 0;  // decimal? | The minimum amount of Vitamin E in milligrams the recipe must have. (optional) 
+            var maxVitaminE = 100;  // decimal? | The maximum amount of Vitamin E in milligrams the recipe can have. (optional) 
+            var minVitaminK = 0;  // decimal? | The minimum amount of Vitamin K in micrograms the recipe must have. (optional) 
+            var maxVitaminK = 100;  // decimal? | The maximum amount of Vitamin K in micrograms the recipe can have. (optional) 
+            var minVitaminB1 = 0;  // decimal? | The minimum amount of Vitamin B1 in milligrams the recipe must have. (optional) 
+            var maxVitaminB1 = 100;  // decimal? | The maximum amount of Vitamin B1 in milligrams the recipe can have. (optional) 
+            var minVitaminB2 = 0;  // decimal? | The minimum amount of Vitamin B2 in milligrams the recipe must have. (optional) 
+            var maxVitaminB2 = 100;  // decimal? | The maximum amount of Vitamin B2 in milligrams the recipe can have. (optional) 
+            var minVitaminB5 = 0;  // decimal? | The minimum amount of Vitamin B5 in milligrams the recipe must have. (optional) 
+            var maxVitaminB5 = 100;  // decimal? | The maximum amount of Vitamin B5 in milligrams the recipe can have. (optional) 
+            var minVitaminB3 = 0;  // decimal? | The minimum amount of Vitamin B3 in milligrams the recipe must have. (optional) 
+            var maxVitaminB3 = 100;  // decimal? | The maximum amount of Vitamin B3 in milligrams the recipe can have. (optional) 
+            var minVitaminB6 = 0;  // decimal? | The minimum amount of Vitamin B6 in milligrams the recipe must have. (optional) 
+            var maxVitaminB6 = 100;  // decimal? | The maximum amount of Vitamin B6 in milligrams the recipe can have. (optional) 
+            var minVitaminB12 = 0;  // decimal? | The minimum amount of Vitamin B12 in micrograms the recipe must have. (optional) 
+            var maxVitaminB12 = 100;  // decimal? | The maximum amount of Vitamin B12 in micrograms the recipe can have. (optional) 
+            var minFiber = 0;  // decimal? | The minimum amount of fiber in grams the recipe must have. (optional) 
+            var maxFiber = 100;  // decimal? | The maximum amount of fiber in grams the recipe can have. (optional) 
+            var minFolate = 0;  // decimal? | The minimum amount of folate in micrograms the recipe must have. (optional) 
+            var maxFolate = 100;  // decimal? | The maximum amount of folate in micrograms the recipe can have. (optional) 
+            var minFolicAcid = 0;  // decimal? | The minimum amount of folic acid in micrograms the recipe must have. (optional) 
+            var maxFolicAcid = 100;  // decimal? | The maximum amount of folic acid in micrograms the recipe can have. (optional) 
+            var minIodine = 0;  // decimal? | The minimum amount of iodine in micrograms the recipe must have. (optional) 
+            var maxIodine = 100;  // decimal? | The maximum amount of iodine in micrograms the recipe can have. (optional) 
+            var minIron = 0;  // decimal? | The minimum amount of iron in milligrams the recipe must have. (optional) 
+            var maxIron = 100;  // decimal? | The maximum amount of iron in milligrams the recipe can have. (optional) 
+            var minMagnesium = 0;  // decimal? | The minimum amount of magnesium in milligrams the recipe must have. (optional) 
+            var maxMagnesium = 100;  // decimal? | The maximum amount of magnesium in milligrams the recipe can have. (optional) 
+            var minManganese = 0;  // decimal? | The minimum amount of manganese in milligrams the recipe must have. (optional) 
+            var maxManganese = 100;  // decimal? | The maximum amount of manganese in milligrams the recipe can have. (optional) 
+            var minPhosphorus = 0;  // decimal? | The minimum amount of phosphorus in milligrams the recipe must have. (optional) 
+            var maxPhosphorus = 100;  // decimal? | The maximum amount of phosphorus in milligrams the recipe can have. (optional) 
+            var minPotassium = 0;  // decimal? | The minimum amount of potassium in milligrams the recipe must have. (optional) 
+            var maxPotassium = 100;  // decimal? | The maximum amount of potassium in milligrams the recipe can have. (optional) 
+            var minSelenium = 0;  // decimal? | The minimum amount of selenium in micrograms the recipe must have. (optional) 
+            var maxSelenium = 100;  // decimal? | The maximum amount of selenium in micrograms the recipe can have. (optional) 
+            var minSodium = 0;  // decimal? | The minimum amount of sodium in milligrams the recipe must have. (optional) 
+            var maxSodium = 100;  // decimal? | The maximum amount of sodium in milligrams the recipe can have. (optional) 
+            var minSugar = 0;  // decimal? | The minimum amount of sugar in grams the recipe must have. (optional) 
+            var maxSugar = 100;  // decimal? | The maximum amount of sugar in grams the recipe can have. (optional) 
+            var minZinc = 0;  // decimal? | The minimum amount of zinc in milligrams the recipe must have. (optional) 
+            var maxZinc = 100;  // decimal? | The maximum amount of zinc in milligrams the recipe can have. (optional) 
+            var offset = 56;  // int? | The number of results to skip (between 0 and 900). (optional) 
+            var number = 10;  // int? | The maximum number of items to return (between 1 and 100). Defaults to 10. (optional)  (default to 10)
+            var limitLicense = true;  // bool? | Whether the recipes should have an open license that allows display with proper attribution. (optional)  (default to true)
 
             try
             {
-                // Get Analyzed Recipe Instructions
-                InlineResponse2004 result = apiInstance.GetAnalyzedRecipeInstructions(id, stepBreakdown);
+                // Search Recipes
+                InlineResponse200 result = apiInstance.SearchRecipes(query, cuisine, excludeCuisine, diet, intolerances, equipment, includeIngredients, excludeIngredients, type, instructionsRequired, fillIngredients, addRecipeInformation, addRecipeNutrition, author, tags, recipeBoxId, titleMatch, maxReadyTime, ignorePantry, sort, sortDirection, minCarbs, maxCarbs, minProtein, maxProtein, minCalories, maxCalories, minFat, maxFat, minAlcohol, maxAlcohol, minCaffeine, maxCaffeine, minCopper, maxCopper, minCalcium, maxCalcium, minCholine, maxCholine, minCholesterol, maxCholesterol, minFluoride, maxFluoride, minSaturatedFat, maxSaturatedFat, minVitaminA, maxVitaminA, minVitaminC, maxVitaminC, minVitaminD, maxVitaminD, minVitaminE, maxVitaminE, minVitaminK, maxVitaminK, minVitaminB1, maxVitaminB1, minVitaminB2, maxVitaminB2, minVitaminB5, maxVitaminB5, minVitaminB3, maxVitaminB3, minVitaminB6, maxVitaminB6, minVitaminB12, maxVitaminB12, minFiber, maxFiber, minFolate, maxFolate, minFolicAcid, maxFolicAcid, minIodine, maxIodine, minIron, maxIron, minMagnesium, maxMagnesium, minManganese, maxManganese, minPhosphorus, maxPhosphorus, minPotassium, maxPotassium, minSelenium, maxSelenium, minSodium, maxSodium, minSugar, maxSugar, minZinc, maxZinc, offset, number, limitLicense);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling RecipesApi.GetAnalyzedRecipeInstructions: " + e.Message );
+                Debug.Print("Exception when calling RecipesApi.SearchRecipes: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -122,36 +216,14 @@ All URIs are relative to *https://api.spoonacular.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*RecipesApi* | [**GetAnalyzedRecipeInstructions**](docs/RecipesApi.md#getanalyzedrecipeinstructions) | **GET** /recipes/{id}/analyzedInstructions | Get Analyzed Recipe Instructions
-*RecipesApi* | [**GetRecipeInformation**](docs/RecipesApi.md#getrecipeinformation) | **GET** /recipes/{id}/information | Get Recipe Information
-*RecipesApi* | [**RecipeNutritionLabelImage**](docs/RecipesApi.md#recipenutritionlabelimage) | **GET** /recipes/{id}/nutritionLabel.png | Recipe Nutrition Label Image
-*RecipesApi* | [**RecipeNutritionLabelWidget**](docs/RecipesApi.md#recipenutritionlabelwidget) | **GET** /recipes/{id}/nutritionLabel | Recipe Nutrition Label Widget
 *RecipesApi* | [**SearchRecipes**](docs/RecipesApi.md#searchrecipes) | **GET** /recipes/complexSearch | Search Recipes
-*RecipesApi* | [**SearchRecipesByIngredients**](docs/RecipesApi.md#searchrecipesbyingredients) | **GET** /recipes/findByIngredients | Search Recipes by Ingredients
-*RecipesApi* | [**SearchRecipesByNutrients**](docs/RecipesApi.md#searchrecipesbynutrients) | **GET** /recipes/findByNutrients | Search Recipes by Nutrients
-*RecipesApi* | [**SummarizeRecipe**](docs/RecipesApi.md#summarizerecipe) | **GET** /recipes/{id}/summary | Summarize Recipe
 
 
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
  - [Model.InlineResponse200](docs/InlineResponse200.md)
- - [Model.InlineResponse2001](docs/InlineResponse2001.md)
- - [Model.InlineResponse2002](docs/InlineResponse2002.md)
- - [Model.InlineResponse2003](docs/InlineResponse2003.md)
- - [Model.InlineResponse2003ExtendedIngredients](docs/InlineResponse2003ExtendedIngredients.md)
- - [Model.InlineResponse2003Measures](docs/InlineResponse2003Measures.md)
- - [Model.InlineResponse2003MeasuresMetric](docs/InlineResponse2003MeasuresMetric.md)
- - [Model.InlineResponse2003WinePairing](docs/InlineResponse2003WinePairing.md)
- - [Model.InlineResponse2003WinePairingProductMatches](docs/InlineResponse2003WinePairingProductMatches.md)
- - [Model.InlineResponse2004](docs/InlineResponse2004.md)
- - [Model.InlineResponse2004Ingredients](docs/InlineResponse2004Ingredients.md)
- - [Model.InlineResponse2004Ingredients1](docs/InlineResponse2004Ingredients1.md)
- - [Model.InlineResponse2004ParsedInstructions](docs/InlineResponse2004ParsedInstructions.md)
- - [Model.InlineResponse2004Steps](docs/InlineResponse2004Steps.md)
- - [Model.InlineResponse2005](docs/InlineResponse2005.md)
  - [Model.InlineResponse200Results](docs/InlineResponse200Results.md)
- - [Model.RecipesFindByIngredientsMissedIngredients](docs/RecipesFindByIngredientsMissedIngredients.md)
 
 
 <a name="documentation-for-authorization"></a>

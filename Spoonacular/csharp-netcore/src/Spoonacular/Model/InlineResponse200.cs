@@ -23,6 +23,7 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Spoonacular.Client.OpenAPIDateConverter;
+using Myeal.Models;
 
 namespace Spoonacular.Model
 {
@@ -44,7 +45,7 @@ namespace Spoonacular.Model
         /// <param name="number">number (required).</param>
         /// <param name="results">results (required).</param>
         /// <param name="totalResults">totalResults (required).</param>
-        public InlineResponse200(int offset = default(int), int number = default(int), List<InlineResponse200Results> results = default(List<InlineResponse200Results>), int totalResults = default(int))
+        public InlineResponse200(int offset = default(int), int number = default(int), List<SpoonacularSearchViewModel> results = default(List<SpoonacularSearchViewModel>), int totalResults = default(int))
         {
             this.Offset = offset;
             this.Number = number;
@@ -72,8 +73,8 @@ namespace Spoonacular.Model
         /// <summary>
         /// Gets or Sets Results
         /// </summary>
-        [DataMember(Name = "results", IsRequired = true, EmitDefaultValue = false)]
-        public List<InlineResponse200Results> Results { get; set; }
+        [DataMember(Name = "results", IsRequired = true, EmitDefaultValue = true)]
+        public List<SpoonacularSearchViewModel> Results { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalResults

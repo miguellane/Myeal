@@ -11,7 +11,11 @@ namespace Myeal.Data
             : base(options)
         {
         }
+
         public DbSet<Myeal.Models.Auth0_Account>? Auth0_Account { get; set; }
-        public DbSet<Spoonacular.Model.InlineResponse200Results>? InlineResponse200Results { get; set; }
+
+        public DbSet<Myeal.Models.SpoonacularSearchViewModel>? SpoonacularSearchViewModel { get; set; }
+
+        public DbSet<Myeal.Models.RecipeSearchFormModel>? RecipeSearchModel { get; set; }
     }
 }

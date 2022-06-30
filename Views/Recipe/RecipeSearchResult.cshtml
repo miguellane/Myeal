@@ -1,21 +1,107 @@
-﻿@model IEnumerable<Spoonacular.Model.InlineResponse200Results>
+﻿@model IEnumerable<Myeal.Models.SpoonacularSearchViewModel>
 
 @{
-    ViewData["Title"] = "RecipeSearchResult";
+    ViewData["Title"] = "SearchResult";
+    Layout = null;
 }
 
-<h1>Found Recipes</h1>
+<!DOCTYPE html>
 
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RecipeSearchResult</title>
+</head>
+<body>
 <p>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                @Html.DisplayNameFor(model => model.vegetarian)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Image)
+                @Html.DisplayNameFor(model => model.vegan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.glutenFree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dairyFree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.veryHealthy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cheap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.veryPopular)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sustainable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lowFodmap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.weightWatcherSmartPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gaps)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.preparationMinutes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cookingMinutes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.aggregateLikes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.healthScore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.creditsText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.license)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sourceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pricePerServing)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.readyInMinutes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.servings)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sourceUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.openLicense)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.imageType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.summary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.spoonacularSourceUrl)
             </th>
             <th></th>
         </tr>
@@ -24,12 +110,94 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Title)
+                @Html.DisplayFor(modelItem => item.vegetarian)
             </td>
             <td>
-                <img src=@Html.DisplayFor(modelItem => item.Image) />
+                @Html.DisplayFor(modelItem => item.vegan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.glutenFree)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dairyFree)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.veryHealthy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cheap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.veryPopular)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sustainable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lowFodmap)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.weightWatcherSmartPoints)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gaps)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.preparationMinutes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cookingMinutes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.aggregateLikes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.healthScore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.creditsText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.license)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sourceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pricePerServing)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.readyInMinutes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.servings)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sourceUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.openLicense)
+            </td>*@
+            <td>
+                <img src=@Html.DisplayNameFor(modelItem => item.image) />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.summary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.spoonacularSourceUrl)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+</body>
+</html>
