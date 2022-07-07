@@ -48,6 +48,12 @@ namespace Myeal.Controllers
 
         public IActionResult RecipeSearchForm()
         {
+            return View(new RecipeSearchFormModel());
+
+        }
+        // GET: HomeController1/Details/5
+        public ActionResult RecipeDetails(int id)
+        {
             return View();
         }
     }

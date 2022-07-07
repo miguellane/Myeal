@@ -1,0 +1,191 @@
+﻿@model Myeal.Models.SpoonacularSearchViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RecipeView</title>
+</head>
+<body>
+
+<div>
+    <h4>SpoonacularSearchViewModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.vegetarian)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.vegetarian)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.vegan)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.vegan)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.glutenFree)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.glutenFree)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dairyFree)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dairyFree)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.veryHealthy)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.veryHealthy)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.cheap)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.cheap)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.veryPopular)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.veryPopular)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.sustainable)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.sustainable)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.lowFodmap)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.lowFodmap)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.weightWatcherSmartPoints)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.weightWatcherSmartPoints)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.gaps)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.gaps)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.preparationMinutes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.preparationMinutes)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.cookingMinutes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.cookingMinutes)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.aggregateLikes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.aggregateLikes)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.healthScore)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.healthScore)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.creditsText)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.creditsText)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.license)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.license)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.sourceName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.sourceName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.pricePerServing)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.pricePerServing)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.readyInMinutes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.readyInMinutes)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.servings)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.servings)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.sourceUrl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.sourceUrl)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.openLicense)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.openLicense)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.image)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.image)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.imageType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.imageType)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.summary)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.summary)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.spoonacularSourceUrl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.spoonacularSourceUrl)
+        </dd>
+    </dl>
+</div>
+</body>
+</html>

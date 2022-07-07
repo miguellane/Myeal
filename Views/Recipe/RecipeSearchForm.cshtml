@@ -1,590 +1,518 @@
 ﻿@model Myeal.Models.RecipeSearchFormModel
 
 @{
-    ViewData["Title"] = "Search";
-    Layout = null;
+	ViewData["Title"] = "Search";
 }
 
 <!DOCTYPE html>
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>RecipeSearchForm</title>
+	<meta name="viewport" content="width=device-width" />
+	<title>RecipeSearchForm</title>
 </head>
 <body>
 
 <h4>RecipeSearchModel</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="RecipeSearchResult">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="query" class="control-label"></label>
-                <input asp-for="query" class="form-control" />
-                <span asp-validation-for="query" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="cuisines" class="control-label"></label>
-                <select asp-for="cuisines" class="form-control" asp-items="Html.GetEnumSelectList<Cuisines>()"/>
-                <span asp-validation-for="cuisines" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="excludeCuisines" class="control-label"></label>
-                <select asp-for="excludeCuisines" class="form-control" asp-items="Html.GetEnumSelectList<Cuisines>()"/>
-                <span asp-validation-for="excludeCuisines" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="diets" class="control-label"></label>
-                <select asp-for="diets" class="form-control" asp-items="Html.GetEnumSelectList<Diets>()"></select>
-                <span asp-validation-for="diets" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="intolerances" class="control-label"></label>
-                <select asp-for="intolerances" class="form-control" asp-items="Html.GetEnumSelectList<Intolerances>()" />
-                <span asp-validation-for="intolerances" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="equipment" class="control-label"></label>
-                <input asp-for="equipment" class="form-control" />
-                <span asp-validation-for="equipment" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="includeIngredients" class="control-label"></label>
-                <input asp-for="includeIngredients" class="form-control" />
-                <span asp-validation-for="includeIngredients" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="excludeIngredients" class="control-label"></label>
-                <input asp-for="excludeIngredients" class="form-control" />
-                <span asp-validation-for="excludeIngredients" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="types" class="control-label"></label>
-                <select asp-for="types" class="form-control" asp-items="Html.GetEnumSelectList<Sorts>()"></select>
-                <span asp-validation-for="types" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="instructionsRequired" /> @Html.DisplayNameFor(model => model.instructionsRequired)
-                </label>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="fillIngredients" /> @Html.DisplayNameFor(model => model.fillIngredients)
-                </label>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="addRecipeInformation" /> @Html.DisplayNameFor(model => model.addRecipeInformation)
-                </label>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="addRecipeNutrition" /> @Html.DisplayNameFor(model => model.addRecipeNutrition)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="author" class="control-label"></label>
-                <input asp-for="author" class="form-control" />
-                <span asp-validation-for="author" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="tags" class="control-label"></label>
-                <input asp-for="tags" class="form-control" />
-                <span asp-validation-for="tags" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="recipeBoxId" class="control-label"></label>
-                <input asp-for="recipeBoxId" class="form-control" />
-                <span asp-validation-for="recipeBoxId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="titleMatch" class="control-label"></label>
-                <input asp-for="titleMatch" class="form-control" />
-                <span asp-validation-for="titleMatch" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="maxReadyTime" class="control-label"></label>
-                <input asp-for="maxReadyTime" class="form-control" />
-                <span asp-validation-for="maxReadyTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ignorePantry" class="control-label"></label>
-                <input asp-for="ignorePantry" class="form-control" />
-                <span asp-validation-for="ignorePantry" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="sorts" class="control-label"></label>
-                <select asp-for="sorts" class="form-control" asp-items="Html.GetEnumSelectList<Sorts>()"></select>
-                <span asp-validation-for="sorts" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="sortDirection" class="control-label"></label>
-                <input asp-for="sortDirection" class="form-control" />
-                <span asp-validation-for="sortDirection" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="minCarbs" class="control-label"></label>
-                <input asp-for="minCarbs" class="form-control" />
-                <span asp-validation-for="minCarbs" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="maxCarbs" class="control-label"></label>
-                <input asp-for="maxCarbs" class="form-control" />
-                <span asp-validation-for="maxCarbs" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="minProtein" class="control-label"></label>
-                <input asp-for="minProtein" class="form-control" />
-                <span asp-validation-for="minProtein" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="maxProtein" class="control-label"></label>
-                <input asp-for="maxProtein" class="form-control" />
-                <span asp-validation-for="maxProtein" class="text-danger"></span>
-            </div>
-            <table class="form-table">
-                <tbody>
-                    <tr>
-                        <td>
-                            <label asp-for="minCalories" class="control-label"></label>
-                            <input asp-for="minCalories" class="form-control" />
-                            <span asp-validation-for="minCalories" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxCalories" class="control-label"></label>
-                            <input asp-for="maxCalories" class="form-control" />
-                            <span asp-validation-for="maxCalories" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minFat" class="control-label"></label>
-                            <input asp-for="minFat" class="form-control" />
-                            <span asp-validation-for="minFat" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxFat" class="control-label"></label>
-                            <input asp-for="maxFat" class="form-control" />
-                            <span asp-validation-for="maxFat" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minAlcohol" class="control-label"></label>
-                            <input asp-for="minAlcohol" class="form-control" />
-                            <span asp-validation-for="minAlcohol" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxAlcohol" class="control-label"></label>
-                            <input asp-for="maxAlcohol" class="form-control" />
-                            <span asp-validation-for="maxAlcohol" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minCaffeine" class="control-label"></label>
-                            <input asp-for="minCaffeine" class="form-control" />
-                            <span asp-validation-for="minCaffeine" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxCaffeine" class="control-label"></label>
-                            <input asp-for="maxCaffeine" class="form-control" />
-                            <span asp-validation-for="maxCaffeine" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minCopper" class="control-label"></label>
-                            <input asp-for="minCopper" class="form-control" />
-                            <span asp-validation-for="minCopper" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxCopper" class="control-label"></label>
-                            <input asp-for="maxCopper" class="form-control" />
-                            <span asp-validation-for="maxCopper" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minCalcium" class="control-label"></label>
-                            <input asp-for="minCalcium" class="form-control" />
-                            <span asp-validation-for="minCalcium" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxCalcium" class="control-label"></label>
-                            <input asp-for="maxCalcium" class="form-control" />
-                            <span asp-validation-for="maxCalcium" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minCholine" class="control-label"></label>
-                            <input asp-for="minCholine" class="form-control" />
-                            <span asp-validation-for="minCholine" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxCholine" class="control-label"></label>
-                            <input asp-for="maxCholine" class="form-control" />
-                            <span asp-validation-for="maxCholine" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minCholesterol" class="control-label"></label>
-                            <input asp-for="minCholesterol" class="form-control" />
-                            <span asp-validation-for="minCholesterol" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxCholesterol" class="control-label"></label>
-                            <input asp-for="maxCholesterol" class="form-control" />
-                            <span asp-validation-for="maxCholesterol" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minFluoride" class="control-label"></label>
-                            <input asp-for="minFluoride" class="form-control" />
-                            <span asp-validation-for="minFluoride" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxFluoride" class="control-label"></label>
-                            <input asp-for="maxFluoride" class="form-control" />
-                            <span asp-validation-for="maxFluoride" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minSaturatedFat" class="control-label"></label>
-                            <input asp-for="minSaturatedFat" class="form-control" />
-                            <span asp-validation-for="minSaturatedFat" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxSaturatedFat" class="control-label"></label>
-                            <input asp-for="maxSaturatedFat" class="form-control" />
-                            <span asp-validation-for="maxSaturatedFat" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minA" class="control-label"></label>
-                            <input asp-for="minA" class="form-control" />
-                            <span asp-validation-for="minA" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxVitaminA" class="control-label"></label>
-                            <input asp-for="maxVitaminA" class="form-control" />
-                            <span asp-validation-for="maxVitaminA" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minC" class="control-label"></label>
-                            <input asp-for="minC" class="form-control" />
-                            <span asp-validation-for="minC" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxVitaminC" class="control-label"></label>
-                            <input asp-for="maxVitaminC" class="form-control" />
-                            <span asp-validation-for="maxVitaminC" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minD" class="control-label"></label>
-                            <input asp-for="minD" class="form-control" />
-                            <span asp-validation-for="minD" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxVitaminD" class="control-label"></label>
-                            <input asp-for="maxVitaminD" class="form-control" />
-                            <span asp-validation-for="maxVitaminD" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minE" class="control-label"></label>
-                            <input asp-for="minE" class="form-control" />
-                            <span asp-validation-for="minE" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxVitaminE" class="control-label"></label>
-                            <input asp-for="maxVitaminE" class="form-control" />
-                            <span asp-validation-for="maxVitaminE" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minK" class="control-label"></label>
-                            <input asp-for="minK" class="form-control" />
-                            <span asp-validation-for="minK" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxVitaminK" class="control-label"></label>
-                            <input asp-for="maxVitaminK" class="form-control" />
-                            <span asp-validation-for="maxVitaminK" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minB1" class="control-label"></label>
-                            <input asp-for="minB1" class="form-control" />
-                            <span asp-validation-for="minB1" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxVitaminB1" class="control-label"></label>
-                            <input asp-for="maxVitaminB1" class="form-control" />
-                            <span asp-validation-for="maxVitaminB1" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minB2" class="control-label"></label>
-                            <input asp-for="minB2" class="form-control" />
-                            <span asp-validation-for="minB2" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxVitaminB2" class="control-label"></label>
-                            <input asp-for="maxVitaminB2" class="form-control" />
-                            <span asp-validation-for="maxVitaminB2" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minB5" class="control-label"></label>
-                            <input asp-for="minB5" class="form-control" />
-                            <span asp-validation-for="minB5" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxVitaminB5" class="control-label"></label>
-                            <input asp-for="maxVitaminB5" class="form-control" />
-                            <span asp-validation-for="maxVitaminB5" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minB3" class="control-label"></label>
-                            <input asp-for="minB3" class="form-control" />
-                            <span asp-validation-for="minB3" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxVitaminB3" class="control-label"></label>
-                            <input asp-for="maxVitaminB3" class="form-control" />
-                            <span asp-validation-for="maxVitaminB3" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minB6" class="control-label"></label>
-                            <input asp-for="minB6" class="form-control" />
-                            <span asp-validation-for="minB6" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxVitaminB6" class="control-label"></label>
-                            <input asp-for="maxVitaminB6" class="form-control" />
-                            <span asp-validation-for="maxVitaminB6" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minB12" class="control-label"></label>
-                            <input asp-for="minB12" class="form-control" />
-                            <span asp-validation-for="minB12" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxVitaminB12" class="control-label"></label>
-                            <input asp-for="maxVitaminB12" class="form-control" />
-                            <span asp-validation-for="maxVitaminB12" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minFiber" class="control-label"></label>
-                            <input asp-for="minFiber" class="form-control" />
-                            <span asp-validation-for="minFiber" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxFiber" class="control-label"></label>
-                            <input asp-for="maxFiber" class="form-control" />
-                            <span asp-validation-for="maxFiber" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minFolate" class="control-label"></label>
-                            <input asp-for="minFolate" class="form-control" />
-                            <span asp-validation-for="minFolate" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxFolate" class="control-label"></label>
-                            <input asp-for="maxFolate" class="form-control" />
-                            <span asp-validation-for="maxFolate" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minFolicAcid" class="control-label"></label>
-                            <input asp-for="minFolicAcid" class="form-control" />
-                            <span asp-validation-for="minFolicAcid" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxFolicAcid" class="control-label"></label>
-                            <input asp-for="maxFolicAcid" class="form-control" />
-                            <span asp-validation-for="maxFolicAcid" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minIodine" class="control-label"></label>
-                            <input asp-for="minIodine" class="form-control" />
-                            <span asp-validation-for="minIodine" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxIodine" class="control-label"></label>
-                            <input asp-for="maxIodine" class="form-control" />
-                            <span asp-validation-for="maxIodine" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minIron" class="control-label"></label>
-                            <input asp-for="minIron" class="form-control" />
-                            <span asp-validation-for="minIron" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxIron" class="control-label"></label>
-                            <input asp-for="maxIron" class="form-control" />
-                            <span asp-validation-for="maxIron" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minMagnesium" class="control-label"></label>
-                            <input asp-for="minMagnesium" class="form-control" />
-                            <span asp-validation-for="minMagnesium" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxMagnesium" class="control-label"></label>
-                            <input asp-for="maxMagnesium" class="form-control" />
-                            <span asp-validation-for="maxMagnesium" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minManganese" class="control-label"></label>
-                            <input asp-for="minManganese" class="form-control" />
-                            <span asp-validation-for="minManganese" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxManganese" class="control-label"></label>
-                            <input asp-for="maxManganese" class="form-control" />
-                            <span asp-validation-for="maxManganese" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minPhosphorus" class="control-label"></label>
-                            <input asp-for="minPhosphorus" class="form-control" />
-                            <span asp-validation-for="minPhosphorus" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxPhosphorus" class="control-label"></label>
-                            <input asp-for="maxPhosphorus" class="form-control" />
-                            <span asp-validation-for="maxPhosphorus" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minPotassium" class="control-label"></label>
-                            <input asp-for="minPotassium" class="form-control" />
-                            <span asp-validation-for="minPotassium" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxPotassium" class="control-label"></label>
-                            <input asp-for="maxPotassium" class="form-control" />
-                            <span asp-validation-for="maxPotassium" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minSelenium" class="control-label"></label>
-                            <input asp-for="minSelenium" class="form-control" />
-                            <span asp-validation-for="minSelenium" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxSelenium" class="control-label"></label>
-                            <input asp-for="maxSelenium" class="form-control" />
-                            <span asp-validation-for="maxSelenium" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minSodium" class="control-label"></label>
-                            <input asp-for="minSodium" class="form-control" />
-                            <span asp-validation-for="minSodium" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxSodium" class="control-label"></label>
-                            <input asp-for="maxSodium" class="form-control" />
-                            <span asp-validation-for="maxSodium" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minSugar" class="control-label"></label>
-                            <input asp-for="minSugar" class="form-control" />
-                            <span asp-validation-for="minSugar" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxSugar" class="control-label"></label>
-                            <input asp-for="maxSugar" class="form-control" />
-                            <span asp-validation-for="maxSugar" class="text-danger"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label asp-for="minZinc" class="control-label"></label>
-                            <input asp-for="minZinc" class="form-control" />
-                            <span asp-validation-for="minZinc" class="text-danger"></span>
-                        </td>
-                        <td>
-                            <label asp-for="maxZinc" class="control-label"></label>
-                            <input asp-for="maxZinc" class="form-control" />
-                            <span asp-validation-for="maxZinc" class="text-danger"></span>
-                        </td>
-                   </tr>           
-                </tbody>
-            </table>
-            <div class="form-group">
-                <label asp-for="offset" class="control-label"></label>
-                <input asp-for="offset" class="form-control" />
-                <span asp-validation-for="offset" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="number" class="control-label"></label>
-                <input asp-for="number" class="form-control" />
-                <span asp-validation-for="number" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="limitLicense" class="control-label"></label>
-                <input asp-for="limitLicense" class="form-control" />
-                <span asp-validation-for="limitLicense" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
+	<div class="col-md-4">
+		<form asp-action="RecipeSearchResult">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="query" class="control-label"></label>
+				<input asp-for="query" class="form-control" />
+				<span asp-validation-for="query" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="cuisines" class="control-label"></label>
+				<select multiple asp-for="cuisines" class="form-control" asp-items="Html.GetEnumSelectList<Cuisines>()"></select>
+				<span asp-validation-for="cuisines" class="text-danger"></span>
+				<label asp-for="excludeCuisines" class="control-label"></label>
+				<select multiple asp-for="excludeCuisines" class="form-control" asp-items="Html.GetEnumSelectList<Cuisines>()"></select>
+				<span asp-validation-for="excludeCuisines" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="diets" class="control-label"></label>
+				<select multiple asp-for="diets" class="form-control" asp-items="Html.GetEnumSelectList<Diets>()"></select>
+				<span asp-validation-for="diets" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="intolerances" class="control-label"></label>
+				<select multiple asp-for="intolerances" class="form-control" asp-items="Html.GetEnumSelectList<Intolerances>()"></select>
+				<span asp-validation-for="intolerances" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="equipment" class="control-label"></label>
+				<input asp-for="equipment" class="form-control" />
+				<span asp-validation-for="equipment" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="includeIngredients" class="control-label"></label>
+				<input asp-for="includeIngredients" class="form-control" />
+				<span asp-validation-for="includeIngredients" class="text-danger"></span>
+				<label asp-for="excludeIngredients" class="control-label"></label>
+				<input asp-for="excludeIngredients" class="form-control" />
+				<span asp-validation-for="excludeIngredients" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="types" class="control-label"></label>
+				<select asp-for="types" class="form-control" asp-items="Html.GetEnumSelectList<Types>()"></select>
+				<span asp-validation-for="types" class="text-danger"></span>
+			</div>
+			@*<div class="form-group form-check">
+				<label class="form-check-label">
+					<input class="form-check-input" asp-for="instructionsRequired" /> @Html.DisplayNameFor(model => model.instructionsRequired)
+				</label>
+			</div>
+			<div class="form-group form-check">
+				<label class="form-check-label">
+					<input class="form-check-input" asp-for="fillIngredients" /> @Html.DisplayNameFor(model => model.fillIngredients)
+				</label>
+			</div>
+			<div class="form-group form-check">
+				<label class="form-check-label">
+					<input class="form-check-input" asp-for="addRecipeInformation" /> @Html.DisplayNameFor(model => model.addRecipeInformation)
+				</label>
+			</div>
+			<div class="form-group form-check">
+				<label class="form-check-label">
+					<input class="form-check-input" asp-for="addRecipeNutrition" /> @Html.DisplayNameFor(model => model.addRecipeNutrition)
+				</label>
+			</div>*@
+			@*<div class="form-group">
+				<label asp-for="author" class="control-label"></label>
+				<input asp-for="author" class="form-control" />
+				<span asp-validation-for="author" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="tags" class="control-label"></label>
+				<input asp-for="tags" class="form-control" />
+				<span asp-validation-for="tags" class="text-danger"></span>
+			</div>@**@
+			@*<div class="form-group">
+				<label asp-for="recipeBoxId" class="control-label"></label>
+				<input asp-for="recipeBoxId" class="form-control" />
+				<span asp-validation-for="recipeBoxId" class="text-danger"></span>
+			</div>*@
+			@*<div class="form-group">
+				<label asp-for="titleMatch" class="control-label"></label>
+				<input asp-for="titleMatch" class="form-control" />
+				<span asp-validation-for="titleMatch" class="text-danger"></span>
+			</div>*@
+			<div class="form-group">
+				<label asp-for="maxReadyTime" class="control-label"></label>
+				<input asp-for="maxReadyTime" class="form-control" />
+				<span asp-validation-for="maxReadyTime" class="text-danger"></span>
+			</div>
+			@*<div class="form-group">
+				<label class="form-check-label">
+					<input class="form-check-input" asp-for="ignorePantry" /> @Html.DisplayNameFor(model => model.ignorePantry)
+				</label>
+			</div>*@
+			<div class="form-group">
+				<label asp-for="sorts" class="control-label"></label>
+				<select asp-for="sorts" class="form-control" asp-items="Html.GetEnumSelectList<Sorts>()"></select>
+				<span asp-validation-for="sorts" class="text-danger"></span>
+			</div>
+			@*<div class="form-group">
+				<label asp-for="sortDirection" class="control-label"></label>
+				<input asp-for="sortDirection" class="form-control" />
+				<span asp-validation-for="sortDirection" class="text-danger"></span>
+			</div>*@
+			<table class="form-table">
+				<thead>
+					<td></td>
+					<td>Min</td>
+					<td>Max</td>
+				</thead>
+				<tbody>
+					<tr><td>Carbohydrates:</td>
+						<td>
+							<input asp-for="minCarbs" class="form-control" />
+							<span asp-validation-for="minCarbs" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxCarbs" class="form-control" />
+							<span asp-validation-for="maxCarbs" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Protein:</td>
+						<td>
+							<input asp-for="minProtein" class="form-control" />
+							<span asp-validation-for="minProtein" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxProtein" class="form-control" />
+							<span asp-validation-for="maxProtein" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Calories</td>
+						<td>
+							<input asp-for="minCalories" class="form-control" />
+							<span asp-validation-for="minCalories" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxCalories" class="form-control" />
+							<span asp-validation-for="maxCalories" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Fat</td>
+						<td>
+							<input asp-for="minFat" class="form-control" />
+							<span asp-validation-for="minFat" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxFat" class="form-control" />
+							<span asp-validation-for="maxFat" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Alcohol</td>
+						<td>
+							<input asp-for="minAlcohol" class="form-control" />
+							<span asp-validation-for="minAlcohol" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxAlcohol" class="form-control" />
+							<span asp-validation-for="maxAlcohol" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Caffeine</td>
+						<td>
+							<input asp-for="minCaffeine" class="form-control" />
+							<span asp-validation-for="minCaffeine" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxCaffeine" class="form-control" />
+							<span asp-validation-for="maxCaffeine" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Copper</td>
+						<td>
+							<input asp-for="minCopper" class="form-control" />
+							<span asp-validation-for="minCopper" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxCopper" class="form-control" />
+							<span asp-validation-for="maxCopper" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Calcium</td>
+						<td>
+							<input asp-for="minCalcium" class="form-control" />
+							<span asp-validation-for="minCalcium" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxCalcium" class="form-control" />
+							<span asp-validation-for="maxCalcium" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Choline</td>
+						<td>
+							<input asp-for="minCholine" class="form-control" />
+							<span asp-validation-for="minCholine" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxCholine" class="form-control" />
+							<span asp-validation-for="maxCholine" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Cholesterol</td>
+						<td>
+							<input asp-for="minCholesterol" class="form-control" />
+							<span asp-validation-for="minCholesterol" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxCholesterol" class="form-control" />
+							<span asp-validation-for="maxCholesterol" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Fluoride</td>
+						<td>
+							<input asp-for="minFluoride" class="form-control" />
+							<span asp-validation-for="minFluoride" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxFluoride" class="form-control" />
+							<span asp-validation-for="maxFluoride" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>SaturatedFat</td>
+						<td>
+							<input asp-for="minSaturatedFat" class="form-control" />
+							<span asp-validation-for="minSaturatedFat" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxSaturatedFat" class="form-control" />
+							<span asp-validation-for="maxSaturatedFat" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>A</td>
+						<td>
+							<input asp-for="minA" class="form-control" />
+							<span asp-validation-for="minA" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxVitaminA" class="form-control" />
+							<span asp-validation-for="maxVitaminA" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>C</td>
+						<td>
+							<input asp-for="minC" class="form-control" />
+							<span asp-validation-for="minC" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxVitaminC" class="form-control" />
+							<span asp-validation-for="maxVitaminC" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>D</td>
+						<td>
+							<input asp-for="minD" class="form-control" />
+							<span asp-validation-for="minD" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxVitaminD" class="form-control" />
+							<span asp-validation-for="maxVitaminD" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>E</td>
+						<td>
+							<input asp-for="minE" class="form-control" />
+							<span asp-validation-for="minE" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxVitaminE" class="form-control" />
+							<span asp-validation-for="maxVitaminE" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>K</td>
+						<td>
+							<input asp-for="minK" class="form-control" />
+							<span asp-validation-for="minK" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxVitaminK" class="form-control" />
+							<span asp-validation-for="maxVitaminK" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>B1</td>
+						<td>
+							<input asp-for="minB1" class="form-control" />
+							<span asp-validation-for="minB1" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxVitaminB1" class="form-control" />
+							<span asp-validation-for="maxVitaminB1" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>B2</td>
+						<td>
+							<input asp-for="minB2" class="form-control" />
+							<span asp-validation-for="minB2" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxVitaminB2" class="form-control" />
+							<span asp-validation-for="maxVitaminB2" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>B5</td>
+						<td>
+							<input asp-for="minB5" class="form-control" />
+							<span asp-validation-for="minB5" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxVitaminB5" class="form-control" />
+							<span asp-validation-for="maxVitaminB5" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>B3</td>
+						<td>
+							<input asp-for="minB3" class="form-control" />
+							<span asp-validation-for="minB3" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxVitaminB3" class="form-control" />
+							<span asp-validation-for="maxVitaminB3" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>B6</td>
+						<td>
+							<input asp-for="minB6" class="form-control" />
+							<span asp-validation-for="minB6" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxVitaminB6" class="form-control" />
+							<span asp-validation-for="maxVitaminB6" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>B12</td>
+						<td>
+							<input asp-for="minB12" class="form-control" />
+							<span asp-validation-for="minB12" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxVitaminB12" class="form-control" />
+							<span asp-validation-for="maxVitaminB12" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Fiber</td>
+						<td>
+							<input asp-for="minFiber" class="form-control" />
+							<span asp-validation-for="minFiber" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxFiber" class="form-control" />
+							<span asp-validation-for="maxFiber" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Folate</td>
+						<td>
+							<input asp-for="minFolate" class="form-control" />
+							<span asp-validation-for="minFolate" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxFolate" class="form-control" />
+							<span asp-validation-for="maxFolate" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>FolicAcid</td>
+						<td>
+							<input asp-for="minFolicAcid" class="form-control" />
+							<span asp-validation-for="minFolicAcid" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxFolicAcid" class="form-control" />
+							<span asp-validation-for="maxFolicAcid" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Iodine</td>
+						<td>
+							<input asp-for="minIodine" class="form-control" />
+							<span asp-validation-for="minIodine" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxIodine" class="form-control" />
+							<span asp-validation-for="maxIodine" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Iron</td>
+						<td>
+							<input asp-for="minIron" class="form-control" />
+							<span asp-validation-for="minIron" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxIron" class="form-control" />
+							<span asp-validation-for="maxIron" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Magnesium</td>
+						<td>
+							<input asp-for="minMagnesium" class="form-control" />
+							<span asp-validation-for="minMagnesium" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxMagnesium" class="form-control" />
+							<span asp-validation-for="maxMagnesium" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Manganese</td>
+						<td>
+							<input asp-for="minManganese" class="form-control" />
+							<span asp-validation-for="minManganese" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxManganese" class="form-control" />
+							<span asp-validation-for="maxManganese" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Phosphorus</td>
+						<td>
+							<input asp-for="minPhosphorus" class="form-control" />
+							<span asp-validation-for="minPhosphorus" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxPhosphorus" class="form-control" />
+							<span asp-validation-for="maxPhosphorus" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Potassium</td>
+						<td>
+							<input asp-for="minPotassium" class="form-control" />
+							<span asp-validation-for="minPotassium" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxPotassium" class="form-control" />
+							<span asp-validation-for="maxPotassium" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Selenium</td>
+						<td>
+							<input asp-for="minSelenium" class="form-control" />
+							<span asp-validation-for="minSelenium" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxSelenium" class="form-control" />
+							<span asp-validation-for="maxSelenium" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Sodium</td>
+						<td>
+							<input asp-for="minSodium" class="form-control" />
+							<span asp-validation-for="minSodium" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxSodium" class="form-control" />
+							<span asp-validation-for="maxSodium" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Sugar</td>
+						<td>
+							<input asp-for="minSugar" class="form-control" />
+							<span asp-validation-for="minSugar" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxSugar" class="form-control" />
+							<span asp-validation-for="maxSugar" class="text-danger"></span>
+						</td>
+					</tr>
+					<tr><td>Zinc</td>
+						<td>
+							<input asp-for="minZinc" class="form-control" />
+							<span asp-validation-for="minZinc" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="maxZinc" class="form-control" />
+							<span asp-validation-for="maxZinc" class="text-danger"></span>
+						</td>
+				   </tr>           
+				</tbody>
+			</table>
+			@*<div class="form-group">
+				<label asp-for="offset" class="control-label"></label>
+				<input asp-for="offset" class="form-control" />
+				<span asp-validation-for="offset" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="number" class="control-label"></label>
+				<input asp-for="number" class="form-control" />
+				<span asp-validation-for="number" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="limitLicense" class="control-label"></label>
+				<input asp-for="limitLicense" class="form-control" />
+				<span asp-validation-for="limitLicense" class="text-danger"></span>
+			</div>*@
+			<div class="form-group">
+				<input type="submit" value="Search" class="btn btn-primary" />
+			</div>
+		</form>
+	</div>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
 </body>
 </html>

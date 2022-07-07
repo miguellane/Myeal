@@ -3,24 +3,23 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Myeal.Models
 {
-    public class RecipeSearchFormModel
-    {
+	public class RecipeSearchFormModel
+	{
 		[Key]
 		public int Id { get; set; }
-        [Required]
+		[Required]
+		[Display(Name ="Search for Recipe:")]
 		public string query { get; set; }
-		//public string? cuisine { get; set; } = null;
 		public Cuisines cuisines { get; set; } = Cuisines.None;
-		//public string? excludeCuisine { get; set; } = null;
 		public Cuisines excludeCuisines { get; set; } = Cuisines.None;
-		//public string? diet { get; set; } = null;
 		public Diets diets { get; set; } = Diets.None;
-		//public string? intolerances { get; set; } = null;
 		public Intolerances intolerances { get; set; } = Intolerances.None;
 		public string? equipment { get; set; } = null;
+		[Display(Name ="Include Ingredients: x, y")]
 		public string? includeIngredients { get; set; } = null;
+		[Display(Name ="Exclude Ingredients: x, y")]
 		public string? excludeIngredients { get; set; } = null;
-		//public string? type { get; set; } = null;
+		[Display(Name = "Type of dish:")]
 		public Types types { get; set; } = Types.None;
 		public bool instructionsRequired { get; set; } = true;
 		public bool fillIngredients { get; set; } = false;
@@ -32,8 +31,8 @@ namespace Myeal.Models
 		public string? titleMatch { get; set; } = null;
 		public decimal? maxReadyTime { get; set; } = null;
 		public bool? ignorePantry { get; set; } = true;
-		//public string sort { get; set; } = "calories";
-		public Sorts sorts { get; set; }
+		[Display(Name = "Sort by:")]
+		public Sorts sorts { get; set; } = Sorts.calories;
 		public string sortDirection { get; set; } = "desc";
 		public decimal? minCarbs { get; set; } = null; public decimal? maxCarbs { get; set; } = null;
 		public decimal? minProtein { get; set; } = null; public decimal? maxProtein { get; set; } = null; 
@@ -134,6 +133,7 @@ namespace Myeal.Models
 		[Description("Vietnamese")]
 		Vietnamese = 33554432
 	}
+	//[Flags]
 	public enum Diets
 	{
 		None = 0,
@@ -191,6 +191,7 @@ namespace Myeal.Models
 	}
 	public enum Types
 	{
+		[Display(Name ="Select")]
 		None = 0,
 		[Description("main course")]
 		main_course = 1,
